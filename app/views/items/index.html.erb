@@ -1,7 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <h1><%= @my_text %></h1>
-
+<%= form_tag({:action => 'index'},{:method => 'get'}) do %>
+キーワード:
+<%= text_field_tag 'keyword', params[:keyword] %>
+<%= submit_tag '検索' %>
+<% end %>
 <table>
   <thead>
     <tr>

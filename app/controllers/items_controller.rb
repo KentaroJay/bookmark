@@ -3,7 +3,12 @@ class ItemsController < ApplicationController
 
   # GET /items or /items.json
   def index
-    @items = Item.all
+    if params[:keyword]
+      kw = "%" + params[:keyword] + "%"
+      @items = Item.where("url LIKE ? OR title LIKE ? OR description LIKE ?", kw, kw, kw)
+    else
+      @items = Item.all
+    end
     @my_text = "こんにちは、高橋さん"
   end
 
